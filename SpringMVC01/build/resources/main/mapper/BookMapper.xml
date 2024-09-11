@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.repository.BookRepository">
+
+	<select id="findAll" resultType="kr.smhrd.entity.Book">
+		select * from book
+	</select>
+
+
+	<insert id="save" parameterType="kr.smhrd.entity.Book">
+		insert into book(title, price, author, page)
+		values(#{title}, #{price}, #{author}, #{page})
+	</insert>
+
+	<select id="findById" parameterType="Long" resultType="kr.smhrd.entity.Book"> <!--파라미터타입 생략가능 -->
+		select * from book where id=#{id}
+	</select>
+</mapper>
