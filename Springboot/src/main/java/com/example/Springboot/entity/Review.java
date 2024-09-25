@@ -1,5 +1,6 @@
 package com.example.Springboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,5 +32,6 @@ public class Review {
     @JoinColumn(name="book_id", referencedColumnName = "id", nullable = true) // 컬럼이름 book_id
     // 두번째는 생략가능. 생략시 기본적으로 PK를 사용
     // nullable 도 기본값 true
+//    @JsonIgnore // 순환 참조를 해결하는 방법 1번째.
     private Book book; // Book_PK(id)
 }
