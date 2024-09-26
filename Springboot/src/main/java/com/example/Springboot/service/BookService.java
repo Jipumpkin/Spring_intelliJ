@@ -29,12 +29,15 @@ public class BookService {
     @Operation(summary = "Book조회", description = "책 조회 서비스")
     @Transactional(readOnly = true)
     public List<BookDTO> getAllBooksDTO(){
-        // Book 정보와 Review 정보 함께 가져오기?
+        // Book 정보와 Review 정보 함께 가져오는 단계
 
 //        1. 서비스 계층에서 reviews 를 미리 로드하여,뷰 계층에서 LazyInitializationException 을 방지
 //        List<Book> books = bookRepository.findAll(); //Book
 //        books.forEach(book -> Hibernate.initialize(book.getReviews()));
 //        return books;
+        // n+1 문제를 해결하지 못하는 방식임
+        // "모든" 데이터를 불러오는 방식이나, Eager와는 다르게 세션 안에서 불러오는 시점을 제어할수있다는 차이가 있음
+
 
 //        2. JPQL을 이용해서 패치조인(fetch join) -> BookRepository
 //        @Query("select b from Book b LEFT JOIN FETCH b.reviews")
@@ -75,5 +78,9 @@ public class BookService {
         reviewDTO.setContent(review.getContent());
         reviewDTO.setCreatedAt(review.getCreatedAt());
         return reviewDTO;
+    }
+
+    public Book save(Book book){
+        return bookRepository.save(book);
     }
 }
