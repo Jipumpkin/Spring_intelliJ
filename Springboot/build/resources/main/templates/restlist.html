@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/js/restlist.js}"></script>
+    <script>
+        loadBookList();
+    </script>
+</head>
+<body>
+<h3>Spring Boot, JPA, Thymeleaf</h3>
+<table border="1">
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>가격</th>
+        <th>저자</th>
+        <th>페이지</th>
+        <th>리뷰</th>
+    </tr>
+    <tbody id="list">
+
+    </tbody>
+</table>
+<a th:href = "@{/register}">등록</a>
+</body>
+</html>

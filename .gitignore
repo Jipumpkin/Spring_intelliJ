@@ -1,0 +1,5 @@
+# 특정 파일 제외
+post/src/main/resources/application.yml
+
+# 특정 파일 제외
+chatgpt/src/main/resources/application.yml
